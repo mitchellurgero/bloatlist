@@ -94,7 +94,7 @@ namespace BloatRemoval
             // Prepare the process to run
             ProcessStartInfo start = new ProcessStartInfo();
             // Enter in the command line arguments, everything you would enter after the executable name itself
-            start.Arguments = "/x " + v2;
+            start.Arguments = "/x " + v2 + "/qn";
             // Enter the executable to run, including the complete path
             start.FileName = "msiexec.exe";
             // Do you want to show a console window?
