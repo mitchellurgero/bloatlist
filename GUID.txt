@@ -1,4 +1,4 @@
-Dell Access
+:: Dell Access
 {F839C6BD-E92E-48FA-9CE6-7BFAF94F7096}
 
 :: Dell Backup and Recovery Manager
