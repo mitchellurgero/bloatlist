@@ -121,7 +121,7 @@
 :: Dell Help and Support Customization (hidden)
 {4E5563B6-DE0A-4F3B-A5D6-15789FD12D9B}
 
-:: Dell Home Systems Service Agreement 2.0.0
+:: Dell Homes Service Agreement 2.0.0
 {AB2CED80-0F16-476F-8769-30A363562F16}
 
 :: Dell _IsIcoRes.exe
@@ -1611,6 +1611,7 @@ for /r "%ProgramFiles(x86)%\HP Games" %%i in (Uninstall.exe) do ( if exist "%%i"
 {25C64847-B900-48AD-A164-1B4F9B774650}
 {8675339C-128C-44DD-83BF-0A5D6ABD8297}
 {C9335768-C821-DD44-38FB-A0D5A6DB2879}
+{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}
 
 :: Lenovo ThinkVantage: Various entries (Active Protection System, Acces Connections, Fingerprint Software, System Update, etc)
 {10F5A72A-1E07-4FAE-A7E7-14B10CC66B17}
