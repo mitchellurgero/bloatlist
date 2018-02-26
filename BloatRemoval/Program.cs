@@ -12,8 +12,10 @@ namespace BloatRemoval
 {
     class Program
     {
+        static string title = "Bloat Removal ";
         static void Main(string[] args)
         {
+            Console.Title = title;
             List<string> list = new List<string>();
             
             Console.WriteLine("Starting with GUID's.. Downloading List, please wait..");
@@ -35,8 +37,15 @@ namespace BloatRemoval
                     }
                 }
             }
-            Console.WriteLine("Starting uninstall(s)");
-            ListPrograms(list);
+            Console.WriteLine("Checking uninstallers (" + list.Count() + ")");
+            if(ListPrograms(list).Count == 0)
+            {
+                Console.WriteLine("No programs found that match GitHub doc.");
+            } else
+            {
+                
+            }
+            
             Console.WriteLine();
             Console.WriteLine("Program Finished!");
 
@@ -51,10 +60,17 @@ namespace BloatRemoval
             }
             try
             {
+                Int32 li = new Int32();
+                li = 1;
                 ManagementObjectSearcher mos =
                   new ManagementObjectSearcher("SELECT * FROM Win32_Product");
-                foreach (ManagementObject mo in mos.Get())
+                Console.Write("Getting list of installed applications...");
+                var lo = mos.Get();
+                Console.WriteLine("Done.");
+                Console.WriteLine("Scanning for matching GUID's...");
+                foreach (ManagementObject mo in lo)
                 {
+                    Console.Title = title + " " + li + "/" + lo.Count;
                     try
                     {
                         //more properties:
@@ -67,6 +83,7 @@ namespace BloatRemoval
                                 {
                                     //Console.Write(mo.ToString());
                                     UninstallProgram(mo["Name"].ToString(), mo["IdentifyingNumber"].ToString());
+                                    programs.Add(mo["Name"].ToString());
                                 }
                             }
                         }
@@ -74,7 +91,9 @@ namespace BloatRemoval
                     catch (Exception ex)
                     {
                         //this program may not have a name property
+                        Console.WriteLine("Error: " + ex.Message);
                     }
+                    li++;
                 }
 
                 return programs;
@@ -82,8 +101,10 @@ namespace BloatRemoval
             }
             catch (Exception ex)
             {
-                return programs;
+                //   return programs;
+                Console.WriteLine("Error: " + ex.Message);
             }
+            return programs;
         }
 
         private static void UninstallProgram(string v1, string v2)
